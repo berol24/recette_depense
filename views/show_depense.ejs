@@ -1,0 +1,32 @@
+
+<%- include("./partiels/header.ejs")  %>
+    <h1></h1>
+
+    <form action="/update_depense/<%= depense._id  %>" method="post">
+        <div class="container">
+          <h1>Détails depenses</h1>
+     
+          <hr>
+          <label for="date"><b>Date</b></label>
+          <input type="date"  name="date_depense" id="date_depense" required>
+
+          <label for="quantite"><b>Quantité</b></label>
+          <input type="number" placeholder="Entrer la quantité" name="quantite_depense" id="quantite" value="<%= depense.depense.quantite_depense %>" required>
+      
+          <label for="designation"><b>Désignation</b></label>
+          <input type="text" placeholder="Entrer la désignation" name="designation_depense" id="designation" value="<%= depense.depense.designation_depense %>" required>
+        
+          <label for="prix_unitaire"><b>Prix unitaire </b></label>
+          <input type="number" step="0.01"  placeholder="Entrer le prix unitaire" name="prix_unitaire_depense"  id="prix_unitaire" value="<%= depense.depense.prix_unitaire_depense %>" required>
+         
+          <label for="prix_total"><b>Prix total</b></label>
+          <input type="Number" step="0.01"  placeholder="Entrer le prix total" name="prix_total_depense"  id="prix_total" value="<%= depense.depense.prix_total_depense %>" required>
+
+          <hr>
+         
+          <button type="submit" class="registerbtn">Enregistrer</button>
+        </div>
+        
+      </form>
+
+  <%- include("./partiels/footer.ejs")  %>

@@ -1,0 +1,18 @@
+{
+  "name": "recette_depense",
+  "version": "1.0.0",
+  "description": "gestion de recettes et depenses",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "bertino",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "mongoose": "^8.7.1",
+    "path": "^0.12.7"
+  }
+}

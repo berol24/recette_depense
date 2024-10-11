@@ -1,0 +1,28 @@
+
+<%- include("./partiels/header.ejs")  %>
+    <h1></h1>
+
+    <form action="/add_recette" method="post">
+        <div class="container">
+          <h1>Formulaire recettes</h1>
+     
+          <hr>
+          <label for="quantite"><b>Quantité</b></label>
+          <input type="number" placeholder="Entrer la quantité" name="quantite_recette" id="quantite" required>
+      
+          <label for="designation"><b>Désignation</b></label>
+          <input type="text" placeholder="Entrer la désignation" name="designation_recette" id="designation" required>
+        
+          <label for="prix_unitaire"><b>Prix unitaire </b></label>
+          <input type="number" step="0.01"  placeholder="Entrer le prix unitaire" name="prix_unitaire_recette" id="prix_unitaire" required>
+          <label for="date"><b>Date</b></label>
+          <input type="date" name="date_recette" id="date_recette" required>
+
+          <hr>
+         
+          <button type="submit" class="registerbtn">Enregistrer</button>
+        </div>
+        
+      </form>
+
+  <%- include("./partiels/footer.ejs")  %>

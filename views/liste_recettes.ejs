@@ -1,0 +1,53 @@
+
+<%- include("./partiels/header.ejs")  %>
+
+<h1>Listes de recettes</h1>
+
+  <table>
+    <tr>
+      <th>N°</th>
+      <th>Date</th>
+      <th>Quantité</th>
+      <th>Designation</th>
+      <th>Prix unitaire</th>
+      <th>Prix total</th>
+      <th>Actions</th>
+    </tr>
+    
+    <% 
+  let total = 0; // Initialisation de la variable total
+  if(recettes){ 
+    recettes.map((recette, index)=>{ 
+      total += recette.recette.prix_total_recette; // Ajouter le total de chaque produit au total général
+  %>
+    
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= recette.recette.date_recette %></td>
+        <td><%= recette.recette.quantite_recette %></td>
+        <td><%= recette.recette.designation_recette %></td>
+        <td><%= recette.recette.prix_unitaire_recette %></td>
+        <td><%= recette.recette.prix_total_recette %></td>
+        <td><a style="color: red;" href="/delete_recette/<%= recette._id %>">Supprimer</a></td>
+        <td><a style="color: blue;" href="/show_recette/<%= recette._id %>">Edit</a></td>
+      </tr>
+    
+  <% 
+    });
+  } 
+%>
+
+
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td style="font-weight: bold; color:black"><%= total %></td>
+</tr>
+
+  </table>
+
+ 
+  <%- include("./partiels/footer.ejs")  %>
