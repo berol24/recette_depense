@@ -13,29 +13,33 @@
       <th>Prix total</th>
       <th>Actions</th>
     </tr>
-    
-    <% 
-  let total = 0; // Initialisation de la variable total
-  if(recettes){ 
-    recettes.map((recette, index)=>{ 
-      total += recette.recette.prix_total_recette; // Ajouter le total de chaque produit au total général
+    <%
+    let total = 0; // Initialisation de la variable total
+    if (recettes) {
+      // Trier les recettes par date
+      recettes.sort((a, b) => {
+        return new Date(a.recette.date_recette) - new Date(b.recette.date_recette);
+      });
+  
+      // Parcourir les recettes triées
+      recettes.map((recette, index) => {
+        total += recette.recette.prix_total_recette; // Ajouter le total de chaque produit au total général
   %>
-    
-      <tr>
-        <td><%= index + 1 %></td>
-        <td><%= recette.recette.date_recette %></td>
-        <td><%= recette.recette.quantite_recette %></td>
-        <td><%= recette.recette.designation_recette %></td>
-        <td><%= recette.recette.prix_unitaire_recette %></td>
-        <td><%= recette.recette.prix_total_recette %></td>
-        <td><a style="color: red;" href="/delete_recette/<%= recette._id %>">Supprimer</a></td>
-        <td><a style="color: blue;" href="/show_recette/<%= recette._id %>">Edit</a></td>
-      </tr>
-    
-  <% 
-    });
-  } 
-%>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= recette.recette.date_recette %></td>
+          <td><%= recette.recette.quantite_recette %></td>
+          <td><%= recette.recette.designation_recette %></td>
+          <td><%= recette.recette.prix_unitaire_recette %></td>
+          <td><%= recette.recette.prix_total_recette %></td>
+          <td><a style="color: red;" href="/delete_recette/<%= recette._id %>">Supprimer</a></td>
+          <td><a style="color: blue;" href="/show_recette/<%= recette._id %>">Edit</a></td>
+        </tr>
+  <%
+      });
+    }
+  %>
+  
 
 
 <tr>

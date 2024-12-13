@@ -14,29 +14,32 @@
       <th>Actions</th>
     </tr>
     
-    <% 
-  let total = 0; // Initialisation de la variable total
-  if(depenses){ 
-    depenses.map((depense, index)=>{ 
-      total += depense.depense.prix_total_depense; // Ajouter le total de chaque produit au total général
+    <%
+    let total = 0; // Initialisation de la variable total
+    if (depenses) {
+      // Trier les depenses par date
+      depenses.sort((a, b) => {
+        return new Date(a.depense.date_depense) - new Date(b.depense.date_depense);
+      });
+  
+      // Parcourir les depenses triées
+      depenses.map((depense, index) => {
+        total += depense.depense.prix_total_depense; // Ajouter le total de chaque produit au total général
   %>
-    
-      <tr>
-        <td><%= index + 1 %></td>
-        <td><%= depense.depense.date_depense %></td>
-        <td><%= depense.depense.quantite_depense %></td>
-        <td><%= depense.depense.designation_depense %></td>
-        <td><%= depense.depense.prix_unitaire_depense %></td>
-        <td><%= depense.depense.prix_total_depense %></td>
-        <td><a style="color: red;" href="/delete_depense/<%= depense._id %>">Supprimer</a></td>
-        <td><a style="color: blue;" href="/show_depense/<%= depense._id %>">Edit</a></td>
-      </tr>
-    
-  <% 
-    });
-  } 
-%>
-
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= depense.depense.date_depense %></td>
+          <td><%= depense.depense.quantite_depense %></td>
+          <td><%= depense.depense.designation_depense %></td>
+          <td><%= depense.depense.prix_unitaire_depense %></td>
+          <td><%= depense.depense.prix_total_depense %></td>
+          <td><a style="color: red;" href="/delete_depense/<%= depense._id %>">Supprimer</a></td>
+          <td><a style="color: blue;" href="/show_depense/<%= depense._id %>">Edit</a></td>
+        </tr>
+  <%
+      });
+    }
+  %>
 
 <tr>
   <td></td>
